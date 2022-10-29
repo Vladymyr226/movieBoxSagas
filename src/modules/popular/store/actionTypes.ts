@@ -1,0 +1,5 @@
+export const MOVIE_POPULAR_REQUEST = 'MOVIE_POPULAR_REQUEST' as const
+export const MOVIE_POPULAR_SUCCESS = 'MOVIE_POPULAR_SUCCESS' as const
+export const MOVIE_POPULAR_FAILURE = 'MOVIE_POPULAR_FAILURE' as const
+
+export const INCREMENT_PAGE = 'INCREMENT_PAGE' as const
