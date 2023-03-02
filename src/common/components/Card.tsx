@@ -1,44 +1,44 @@
-import React, { CSSProperties, useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { markAsFavoriteRequest } from '../../modules/favorite/store/actions'
+import React, { CSSProperties, useEffect, useState } from "react"
+import { useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { markAsFavoriteRequest } from "../../modules/favorite/store/actions"
 
 const styles: Record<string, CSSProperties> = {
   container_card: {
-    display: 'grid',
-    marginTop: '20px',
-    cursor: 'pointer',
-    justifyItems: 'center',
+    display: "grid",
+    marginTop: "20px",
+    cursor: "pointer",
+    justifyItems: "center",
   },
   image_card_wrapper: {
-    width: '150px',
-    height: '225px',
+    width: "150px",
+    height: "225px",
   },
   image_card: {
-    borderRadius: '10px',
-    width: '100%',
+    borderRadius: "10px",
+    width: "100%",
   },
 
   flex_item_card: {
-    marginTop: '20px',
-    fontSize: '1em',
-    padding: '0.7em',
-    width: '150px',
+    marginTop: "20px",
+    fontSize: "1em",
+    padding: "0.7em",
+    width: "150px",
   },
   title_card: {
-    marginTop: '0px',
-    marginBottom: '0px',
+    marginTop: "0px",
+    marginBottom: "0px",
   },
   btn_favorite: {
-    background: 'transparent',
-    border: '0',
-    outline: 'none',
-    fontSize: '20px',
+    background: "transparent",
+    border: "0",
+    outline: "none",
+    fontSize: "20px",
   },
   btn_buy_movie: {
-    background: 'transparent',
-    fontSize: '20px',
-    borderRadius: '30px',
+    background: "transparent",
+    fontSize: "20px",
+    borderRadius: "30px",
   },
 }
 
@@ -50,7 +50,13 @@ type CardProps = {
   favoriteMoviesIds: number[] | []
 }
 
-const Card = ({ id, backdropPath, title, releaseDate, favoriteMoviesIds }: CardProps) => {
+const Card = ({
+  id,
+  backdropPath,
+  title,
+  releaseDate,
+  favoriteMoviesIds,
+}: CardProps) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
@@ -67,11 +73,13 @@ const Card = ({ id, backdropPath, title, releaseDate, favoriteMoviesIds }: CardP
   }, [favoriteMoviesIds])
 
   const handlerFavorite = () => {
-    dispatch(markAsFavoriteRequest({ mediaType: 'movie', mediaId: id, favorite: !isFavorite }))
-  }
-
-  const handlerBuyMovie = () => {
-    getFilmId(id)
+    dispatch(
+      markAsFavoriteRequest({
+        mediaType: "movie",
+        mediaId: id,
+        favorite: !isFavorite,
+      })
+    )
   }
 
   return (
@@ -86,12 +94,6 @@ const Card = ({ id, backdropPath, title, releaseDate, favoriteMoviesIds }: CardP
           {releaseDate}
           <button style={styles.btn_favorite} onClick={handlerFavorite}>
             {btnValueFavorite}
-          </button>
-          <br />
-          <br />
-
-          <button style={styles.btn_buy_movie} onClick={handlerBuyMovie}>
-            <span> Купить 🛒</span>
           </button>
         </p>
       </div>
